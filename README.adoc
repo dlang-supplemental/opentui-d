@@ -1,0 +1,91 @@
+= opentui-d
+
+D bindings for link:https://github.com/anomalyco/opentui[OpenTUI]'s native Zig
+terminal UI core (C ABI).
+
+No prior D wrapper existed (as of 2026-07); this package mirrors the approach
+used by community Go bindings: load the official native shared library and wrap
+the imperative renderer / buffer API.
+
+Declarative components (`Box`, `Text`, React/Solid) still live in `@opentui/*`
+TypeScript packages. A large part of the high-level tree is not yet fully native.
+
+== Requirements
+
+* D compiler (`ldc2` or `dmd`) and link:https://dub.pm/[dub]
+* OpenTUI native shared library for your platform (see below)
+* Python 3 (only if regenerating bindings from upstream `zig.ts`)
+
+== Fetch the native library
+
+[source,powershell]
+----
+pwsh tools/fetch_native.ps1
+# optional: -Version v0.4.5
+----
+
+This downloads the matching `opentui-native-*.zip` from
+https://github.com/anomalyco/opentui/releases into `native/<platform>/`.
+
+== Quick start
+
+[source,d]
+----
+import opentui;
+
+void main()
+{
+    version (Windows)
+        load("native/windows-x64/opentui.dll");
+    else version (OSX)
+        load("native/darwin-arm64/libopentui.dylib");
+    else
+        load("native/linux-x64/libopentui.so");
+
+    scope (exit)
+        unload();
+
+    auto renderer = Renderer.create(60, 20);
+    scope (exit)
+        renderer.destroy();
+
+    auto buf = renderer.nextBuffer();
+    buf.clear(black);
+    buf.drawText("Hello, OpenTUI!", 2, 2, green);
+    renderer.renderFrame(true);
+}
+----
+
+Build / test (skips the integration unittest when no native lib is present):
+
+[source,bash]
+----
+dub test
+----
+
+== Layout
+
+* `source/opentui/ffi.d` — generated dynamic loader (281 C ABI symbols)
+* `source/opentui/c.d` — generated `extern(C)` declarations (static-link path)
+* `source/opentui/renderer.d`, `buffer.d`, `color.d` — idiomatic wrappers
+* `tools/gen_bindings.py` — regenerate from upstream `zig.ts` (+ optional `lib.zig`)
+* `tools/fetch_native.ps1` — download release binaries
+
+== Regenerating bindings
+
+[source,bash]
+----
+# after cloning anomalyco/opentui @ the desired tag:
+python tools/gen_bindings.py \
+  --zig-ts /path/to/opentui/packages/core/src/zig.ts \
+  --lib-zig /path/to/opentui/packages/core/src/zig/lib.zig \
+  --version v0.4.5
+----
+
+== Changelog
+
+See link:CHANGELOG.adoc[CHANGELOG].
+
+== License
+
+MIT. OpenTUI itself is MIT (anomalyco/opentui).

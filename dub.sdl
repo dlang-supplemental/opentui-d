@@ -1,0 +1,16 @@
+name "opentui-d"
+description "D bindings for OpenTUI's native Zig terminal UI core"
+authors "amdphreak"
+copyright "Copyright © 2026, amdphreak"
+license "MIT"
+// Consumers: dependency "opentui-d" path="../opentui-d"
+// or git+https://github.com/dlang-supplemental/opentui-d.git
+
+targetType "library"
+targetName "opentui_d"
+
+importPaths "source"
+sourcePaths "source"
+
+// Dynamic loading — no link flags required. Place the OpenTUI shared library
+// on the loader search path or pass an absolute path to opentui.load().

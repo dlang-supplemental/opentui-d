@@ -1,0 +1,21 @@
+= 2026-07-22 — Initial OpenTUI D bindings
+
+== Summary
+
+First cut of `opentui-d` under `dlang-supplemental`. No existing D wrapper was
+found on GitHub / awesome-opentui.
+
+== Approach
+
+* Parse the TypeScript FFI symbol table (`packages/core/src/zig.ts`) and filter
+  against `export fn` names in `lib.zig`.
+* Dynamically load the platform shared library shipped in OpenTUI GitHub
+  Releases (`opentui-native-vX.Y.Z-*.zip`).
+* Expose a small idiomatic surface (`Renderer`, `Buffer`, packed `RGBA`) on top
+  of the generated FFI.
+
+== Notes
+
+* Handle-based ABI (`uint` `NativeHandle`) — newer than the older pointer-based
+  Go header in some community forks.
+* High-level construct factories remain TypeScript-side for now.
