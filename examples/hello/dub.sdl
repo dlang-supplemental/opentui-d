@@ -1,0 +1,4 @@
+name "opentui-d-hello"
+description "Minimal OpenTUI D example"
+targetType "executable"
+dependency "opentui-d" path="../.."
