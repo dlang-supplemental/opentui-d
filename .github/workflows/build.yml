@@ -1,0 +1,84 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    name: ${{ matrix.artifact }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact: linux-x86_64
+          - os: ubuntu-24.04-arm
+            artifact: linux-aarch64
+          - os: windows-latest
+            artifact: windows-x86_64
+          - os: windows-11-arm
+            artifact: windows-aarch64
+          - os: macos-15
+            artifact: macos-aarch64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up D (LDC)
+        uses: dlang-community/setup-dlang@v2
+        with:
+          compiler: ldc-latest
+
+      - name: Fetch OpenTUI native library
+        shell: pwsh
+        run: ./tools/fetch_native.ps1
+
+      - name: Build + test
+        shell: bash
+        run: |
+          set -euo pipefail
+          dub build --compiler=ldc2
+          dub test --compiler=ldc2
+
+      - name: Build hello example
+        shell: bash
+        run: |
+          set -euo pipefail
+          dub build --compiler=ldc2 --root=examples/hello
+
+  release:
+    name: GitHub Release
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          body: |
+            ## opentui-d ${{ github.ref_name }}
+
+            D bindings for [OpenTUI](https://github.com/anomalyco/opentui)'s native Zig terminal UI core.
+
+            ### Setup
+            ```powershell
+            powershell -File tools/fetch_native.ps1
+            dub test
+            ```
+
+            Native shared libraries are **not** bundled — fetch them from
+            [OpenTUI releases](https://github.com/anomalyco/opentui/releases)
+            (currently targeting **v0.4.5**).
