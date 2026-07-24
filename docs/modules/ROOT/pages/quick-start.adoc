@@ -1,0 +1,38 @@
+= Quick start
+:navtitle: Quick start
+
+[source,d]
+----
+import opentui;
+
+void main()
+{
+    version (Windows)
+        load("native/windows-x64/opentui.dll");
+    else version (OSX)
+        load("native/darwin-arm64/libopentui.dylib");
+    else
+        load("native/linux-x64/libopentui.so");
+
+    scope (exit)
+        unload();
+
+    auto renderer = Renderer.create(60, 20);
+    scope (exit)
+        renderer.destroy();
+
+    auto buf = renderer.nextBuffer();
+    buf.clear(black);
+    buf.drawText("Hello, OpenTUI!", 2, 2, green);
+    renderer.renderFrame(true);
+}
+----
+
+Build / test (skips the integration unittest when no native lib is present):
+
+[source,bash]
+----
+dub test
+----
+
+See also the `examples/hello` package in the repository.

@@ -1,0 +1,6 @@
+* xref:index.adoc[Introduction]
+* xref:quick-start.adoc[Quick start]
+* xref:native-library.adoc[Native library]
+* xref:layout.adoc[Layout]
+* xref:regenerating.adoc[Regenerating bindings]
+* xref:changelog.adoc[Changelog]

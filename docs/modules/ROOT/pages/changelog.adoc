@@ -1,0 +1,8 @@
+= Changelog
+:navtitle: Changelog
+
+== 2026-07-22 — v0.1.0
+
+* Initial D bindings for OpenTUI native core (dynamic loader + renderer/buffer wrappers)
+* Binding generator from upstream `zig.ts` / `lib.zig` (target *v0.4.5*)
+* `tools/fetch_native.ps1` to pull official GitHub Release binaries

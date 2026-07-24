@@ -1,0 +1,16 @@
+= Regenerating bindings
+:navtitle: Regenerating bindings
+
+After cloning https://github.com/anomalyco/opentui[anomalyco/opentui] at the
+desired tag:
+
+[source,bash]
+----
+python tools/gen_bindings.py \
+  --zig-ts /path/to/opentui/packages/core/src/zig.ts \
+  --lib-zig /path/to/opentui/packages/core/src/zig/lib.zig \
+  --version v0.4.5
+----
+
+The generator reads the FFI symbol table from `zig.ts` (`dlopen` rawSymbols)
+and optionally filters against `lib.zig` exports.

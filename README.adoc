@@ -3,6 +3,9 @@
 D bindings for link:https://github.com/anomalyco/opentui[OpenTUI]'s native Zig
 terminal UI core (C ABI).
 
+https://github.com/dlang-supplemental/opentui-d[Repository] ·
+https://dlang-supplemental.github.io/docs/opentui-d/index.html[Documentation]
+
 No prior D wrapper existed (as of 2026-07); this package mirrors the approach
 used by community Go bindings: load the official native shared library and wrap
 the imperative renderer / buffer API.

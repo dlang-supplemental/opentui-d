@@ -1,0 +1,22 @@
+= Native library
+:navtitle: Native library
+
+OpenTUI ships platform shared libraries on GitHub Releases as
+`opentui-native-*.zip`. Fetch them with:
+
+[source,powershell]
+----
+pwsh tools/fetch_native.ps1
+# optional: -Version v0.4.5
+----
+
+This downloads the matching zip from
+https://github.com/anomalyco/opentui/releases into `native/<platform>/`.
+
+Typical layout after fetch:
+
+* Windows: `native/windows-x64/opentui.dll`
+* Linux: `native/linux-x64/libopentui.so`
+* macOS: `native/darwin-arm64/libopentui.dylib` (or `darwin-x64`)
+
+Call `opentui.load(path)` before creating a renderer; call `unload()` on exit.

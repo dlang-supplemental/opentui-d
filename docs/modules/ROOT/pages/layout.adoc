@@ -1,0 +1,8 @@
+= Layout
+:navtitle: Layout
+
+* `source/opentui/ffi.d` — generated dynamic loader (281 C ABI symbols)
+* `source/opentui/c.d` — generated `extern(C)` declarations (static-link path)
+* `source/opentui/renderer.d`, `buffer.d`, `color.d` — idiomatic wrappers
+* `tools/gen_bindings.py` — regenerate from upstream `zig.ts` (+ optional `lib.zig`)
+* `tools/fetch_native.ps1` — download release binaries
