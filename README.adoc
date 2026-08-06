@@ -1,17 +1,38 @@
+ifndef::env-github[:icons: font]
+:toc: preamble
+:toclevels: 2
+:sectanchors:
+
+ifndef::env-github[]
+image:https://img.shields.io/github/contributors/dlang-supplemental/opentui-d.svg?style=for-the-badge[Contributors,link=https://github.com/dlang-supplemental/opentui-d/graphs/contributors]
+image:https://img.shields.io/github/forks/dlang-supplemental/opentui-d.svg?style=for-the-badge[Forks,link=https://github.com/dlang-supplemental/opentui-d/network/members]
+image:https://img.shields.io/github/stars/dlang-supplemental/opentui-d.svg?style=for-the-badge[Stars,link=https://github.com/dlang-supplemental/opentui-d/stargazers]
+image:https://img.shields.io/github/issues/dlang-supplemental/opentui-d.svg?style=for-the-badge[Issues,link=https://github.com/dlang-supplemental/opentui-d/issues]
+image:https://img.shields.io/github/license/dlang-supplemental/opentui-d.svg?style=for-the-badge[License,link=https://github.com/dlang-supplemental/opentui-d/blob/main/LICENSE]
+endif::[]
+
+ifdef::env-github[]
+image:https://img.shields.io/github/contributors/dlang-supplemental/opentui-d.svg?style=for-the-badge[Contributors]
+image:https://img.shields.io/github/forks/dlang-supplemental/opentui-d.svg?style=for-the-badge[Forks]
+image:https://img.shields.io/github/stars/dlang-supplemental/opentui-d.svg?style=for-the-badge[Stars]
+image:https://img.shields.io/github/issues/dlang-supplemental/opentui-d.svg?style=for-the-badge[Issues]
+image:https://img.shields.io/github/license/dlang-supplemental/opentui-d.svg?style=for-the-badge[License]
+endif::[]
+
 = opentui-d
 
-D bindings for link:https://github.com/anomalyco/opentui[OpenTUI]'s native Zig
-terminal UI core (C ABI).
+D bindings for link:https://github.com/anomalyco/opentui[OpenTUI]'s native Zig terminal UI core (C ABI).
 
-https://github.com/dlang-supplemental/opentui-d[Repository] ·
-https://dlang-supplemental.github.io/docs/opentui-d/index.html[Documentation]
+link:https://dlang-supplemental.github.io/docs/opentui-d/index.html[Explore the docs] ·
+link:https://github.com/dlang-supplemental/opentui-d/issues[Report Bug]
 
-No prior D wrapper existed (as of 2026-07); this package mirrors the approach
-used by community Go bindings: load the official native shared library and wrap
-the imperative renderer / buffer API.
+No prior D wrapper existed (as of 2026-07); this package mirrors the approach used by community Go bindings: load the official native shared library and wrap the imperative renderer / buffer API.
 
-Declarative components (`Box`, `Text`, React/Solid) still live in `@opentui/*`
-TypeScript packages. A large part of the high-level tree is not yet fully native.
+Declarative components (`Box`, `Text`, React/Solid) still live in `@opentui/*` TypeScript packages. A large part of the high-level tree is not yet fully native.
+
+Install: `dub add opentui-d` (after fetching the native library below).
+
+== About The Project
 
 == Requirements
 
@@ -19,7 +40,9 @@ TypeScript packages. A large part of the high-level tree is not yet fully native
 * OpenTUI native shared library for your platform (see below)
 * Python 3 (only if regenerating bindings from upstream `zig.ts`)
 
-== Fetch the native library
+== Installation
+
+=== Fetch the native library
 
 [source,powershell]
 ----
@@ -27,10 +50,11 @@ pwsh tools/fetch_native.ps1
 # optional: -Version v0.4.5
 ----
 
-This downloads the matching `opentui-native-*.zip` from
-https://github.com/anomalyco/opentui/releases into `native/<platform>/`.
+This downloads the matching `opentui-native-*.zip` from https://github.com/anomalyco/opentui/releases into `native/<platform>/`.
 
-== Quick start
+== Usage
+
+=== Quick start
 
 [source,d]
 ----
@@ -66,7 +90,7 @@ Build / test (skips the integration unittest when no native lib is present):
 dub test
 ----
 
-== Layout
+=== Layout
 
 * `source/opentui/ffi.d` — generated dynamic loader (281 C ABI symbols)
 * `source/opentui/c.d` — generated `extern(C)` declarations (static-link path)
@@ -74,7 +98,7 @@ dub test
 * `tools/gen_bindings.py` — regenerate from upstream `zig.ts` (+ optional `lib.zig`)
 * `tools/fetch_native.ps1` — download release binaries
 
-== Regenerating bindings
+=== Regenerating bindings
 
 [source,bash]
 ----
@@ -91,4 +115,11 @@ See link:CHANGELOG.adoc[CHANGELOG].
 
 == License
 
-MIT. OpenTUI itself is MIT (anomalyco/opentui).
+MIT — see link:LICENSE[LICENSE]. OpenTUI itself is MIT (anomalyco/opentui).
+
+== Contact
+
+DLang Supplemental — dlang@devcentr.org
+
+* Project: https://github.com/dlang-supplemental/opentui-d
+* Site: https://dlang-supplemental.github.io
