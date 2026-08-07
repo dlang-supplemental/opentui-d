@@ -3,21 +3,12 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-ifndef::env-github[]
+[[readme-top]]
 image:https://img.shields.io/github/contributors/dlang-supplemental/opentui-d.svg?style=for-the-badge[Contributors,link=https://github.com/dlang-supplemental/opentui-d/graphs/contributors]
 image:https://img.shields.io/github/forks/dlang-supplemental/opentui-d.svg?style=for-the-badge[Forks,link=https://github.com/dlang-supplemental/opentui-d/network/members]
 image:https://img.shields.io/github/stars/dlang-supplemental/opentui-d.svg?style=for-the-badge[Stars,link=https://github.com/dlang-supplemental/opentui-d/stargazers]
 image:https://img.shields.io/github/issues/dlang-supplemental/opentui-d.svg?style=for-the-badge[Issues,link=https://github.com/dlang-supplemental/opentui-d/issues]
 image:https://img.shields.io/github/license/dlang-supplemental/opentui-d.svg?style=for-the-badge[License,link=https://github.com/dlang-supplemental/opentui-d/blob/main/LICENSE]
-endif::[]
-
-ifdef::env-github[]
-image:https://img.shields.io/github/contributors/dlang-supplemental/opentui-d.svg?style=for-the-badge[Contributors]
-image:https://img.shields.io/github/forks/dlang-supplemental/opentui-d.svg?style=for-the-badge[Forks]
-image:https://img.shields.io/github/stars/dlang-supplemental/opentui-d.svg?style=for-the-badge[Stars]
-image:https://img.shields.io/github/issues/dlang-supplemental/opentui-d.svg?style=for-the-badge[Issues]
-image:https://img.shields.io/github/license/dlang-supplemental/opentui-d.svg?style=for-the-badge[License]
-endif::[]
 
 = opentui-d
 
@@ -33,6 +24,8 @@ Declarative components (`Box`, `Text`, React/Solid) still live in `@opentui/*` T
 Install: `dub add opentui-d` (after fetching the native library below).
 
 == About The Project
+
+link:#readme-top[back to top]
 
 == Requirements
 
@@ -51,6 +44,8 @@ pwsh tools/fetch_native.ps1
 ----
 
 This downloads the matching `opentui-native-*.zip` from https://github.com/anomalyco/opentui/releases into `native/<platform>/`.
+
+link:#readme-top[back to top]
 
 == Usage
 
@@ -109,6 +104,8 @@ python tools/gen_bindings.py \
   --version v0.4.5
 ----
 
+link:#readme-top[back to top]
+
 == Changelog
 
 See link:CHANGELOG.adoc[CHANGELOG].
@@ -117,9 +114,13 @@ See link:CHANGELOG.adoc[CHANGELOG].
 
 MIT — see link:LICENSE[LICENSE]. OpenTUI itself is MIT (anomalyco/opentui).
 
+link:#readme-top[back to top]
+
 == Contact
 
 DLang Supplemental — dlang@devcentr.org
 
 * Project: https://github.com/dlang-supplemental/opentui-d
 * Site: https://dlang-supplemental.github.io
+
+link:#readme-top[back to top]
