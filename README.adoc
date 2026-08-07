@@ -3,7 +3,26 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-[[readme-top]]
+ifdef::env-github[]
+++++
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://github.com/dlang-supplemental/opentui-d/graphs/contributors"><img src="https://img.shields.io/github/contributors/dlang-supplemental/opentui-d.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/dlang-supplemental/opentui-d/network/members"><img src="https://img.shields.io/github/forks/dlang-supplemental/opentui-d.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/dlang-supplemental/opentui-d/stargazers"><img src="https://img.shields.io/github/stars/dlang-supplemental/opentui-d.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/dlang-supplemental/opentui-d/issues"><img src="https://img.shields.io/github/issues/dlang-supplemental/opentui-d.svg?style=for-the-badge" alt="Issues"></a>
+<a href="https://github.com/dlang-supplemental/opentui-d/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dlang-supplemental/opentui-d.svg?style=for-the-badge" alt="License"></a>
+<br />
+<h3 align="center">opentui-d</h3>
+<p align="center">
+D bindings for <a href="https://github.com/anomalyco/opentui">OpenTUI</a>'s native Zig terminal UI core (C ABI).<br />
+<a href="https://dlang-supplemental.github.io/docs/opentui-d/index.html"><strong>Explore the docs</strong></a><br /><br /><a href="https://github.com/dlang-supplemental/opentui-d/issues">Report Bug</a>
+</p>
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
 image:https://img.shields.io/github/contributors/dlang-supplemental/opentui-d.svg?style=for-the-badge[Contributors,link=https://github.com/dlang-supplemental/opentui-d/graphs/contributors]
 image:https://img.shields.io/github/forks/dlang-supplemental/opentui-d.svg?style=for-the-badge[Forks,link=https://github.com/dlang-supplemental/opentui-d/network/members]
 image:https://img.shields.io/github/stars/dlang-supplemental/opentui-d.svg?style=for-the-badge[Stars,link=https://github.com/dlang-supplemental/opentui-d/stargazers]
@@ -16,6 +35,7 @@ D bindings for link:https://github.com/anomalyco/opentui[OpenTUI]'s native Zig t
 
 link:https://dlang-supplemental.github.io/docs/opentui-d/index.html[Explore the docs] ·
 link:https://github.com/dlang-supplemental/opentui-d/issues[Report Bug]
+endif::[]
 
 No prior D wrapper existed (as of 2026-07); this package mirrors the approach used by community Go bindings: load the official native shared library and wrap the imperative renderer / buffer API.
 
@@ -25,7 +45,9 @@ Install: `dub add opentui-d` (after fetching the native library below).
 
 == About The Project
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 
 == Requirements
 
@@ -45,7 +67,9 @@ pwsh tools/fetch_native.ps1
 
 This downloads the matching `opentui-native-*.zip` from https://github.com/anomalyco/opentui/releases into `native/<platform>/`.
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 
 == Usage
 
@@ -104,7 +128,9 @@ python tools/gen_bindings.py \
   --version v0.4.5
 ----
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 
 == Changelog
 
@@ -114,7 +140,9 @@ See link:CHANGELOG.adoc[CHANGELOG].
 
 MIT — see link:LICENSE[LICENSE]. OpenTUI itself is MIT (anomalyco/opentui).
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 
 == Contact
 
@@ -123,4 +151,6 @@ DLang Supplemental — dlang@devcentr.org
 * Project: https://github.com/dlang-supplemental/opentui-d
 * Site: https://dlang-supplemental.github.io
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
